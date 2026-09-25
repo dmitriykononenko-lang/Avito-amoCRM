@@ -1,0 +1,24 @@
+{
+  "widget": {
+    "name": "Avito by ko:agency",
+    "short_description": "Чаты и звонки Avito в amoCRM",
+    "description": "Переписка с покупателями Avito в чатах amoCRM, автоматические сделки по объявлениям, звонки с подменных номеров с записью."
+  },
+  "advanced": { "title": "Avito: подключения и правила" },
+  "ui": {
+    "connect_avito": "Подключить аккаунт Avito",
+    "accounts": "Аккаунты Avito",
+    "pipeline": "Воронка",
+    "status": "Этап",
+    "responsible": "Ответственный",
+    "file_mode": "Файлы (не фото) в Avito",
+    "file_mode_link": "Отправлять ссылкой",
+    "file_mode_reject": "Не отправлять, показать ошибку",
+    "state_ok": "Работает",
+    "state_reauth": "Нужна повторная авторизация",
+    "last_event": "Последнее событие",
+    "save": "Сохранить",
+    "loading": "Загрузка…",
+    "error": "Не удалось загрузить настройки. Обновите страницу или напишите в поддержку ko:agency."
+  }
+}

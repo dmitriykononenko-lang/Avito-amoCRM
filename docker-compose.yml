@@ -1,0 +1,46 @@
+# Продакшн на VPS в РФ. Секреты — только в .env рядом (не в git).
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: avito
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?задайте POSTGRES_PASSWORD в .env}
+      POSTGRES_DB: avito_amocrm
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U avito"]
+      interval: 10s
+
+  migrate:
+    build: .
+    env_file: .env
+    environment:
+      DATABASE_URL: postgres://avito:${POSTGRES_PASSWORD}@db:5432/avito_amocrm
+    command: ["node", "dist/db/migrate.js"]
+    depends_on: { db: { condition: service_healthy } }
+
+  api:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DATABASE_URL: postgres://avito:${POSTGRES_PASSWORD}@db:5432/avito_amocrm
+    command: ["node", "dist/main.js", "api"]
+    ports: ["127.0.0.1:8080:8080"]   # наружу — через nginx/caddy с HTTPS
+    depends_on: { migrate: { condition: service_completed_successfully } }
+    volumes: [storage:/app/storage]
+
+  worker:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DATABASE_URL: postgres://avito:${POSTGRES_PASSWORD}@db:5432/avito_amocrm
+    command: ["node", "dist/main.js", "worker"]
+    depends_on: { migrate: { condition: service_completed_successfully } }
+    volumes: [storage:/app/storage]
+
+volumes:
+  pgdata:
+  storage:

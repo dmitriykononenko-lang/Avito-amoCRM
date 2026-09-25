@@ -1,0 +1,22 @@
+{
+  "widget": {
+    "name": "widget.name",
+    "short_description": "widget.short_description",
+    "description": "widget.description",
+    "version": "0.1.0",
+    "interface_version": 2,
+    "init_once": false,
+    "locale": ["ru", "en"],
+    "installation": true,
+    "support": {
+      "link": "https://koagency.me",
+      "email": "hello@koagency.me"
+    }
+  },
+  "oauth": "Y",
+  "locations": ["settings", "advanced_settings"],
+  "settings": {},
+  "advanced": {
+    "title": "advanced.title"
+  }
+}

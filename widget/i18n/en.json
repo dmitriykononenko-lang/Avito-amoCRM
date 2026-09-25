@@ -1,0 +1,24 @@
+{
+  "widget": {
+    "name": "Avito by ko:agency",
+    "short_description": "Avito chats and calls in CRM",
+    "description": "Chat with Avito buyers from CRM chats, automatic leads per listing, tracked calls with recordings."
+  },
+  "advanced": { "title": "Avito: connections and rules" },
+  "ui": {
+    "connect_avito": "Connect Avito account",
+    "accounts": "Avito accounts",
+    "pipeline": "Pipeline",
+    "status": "Stage",
+    "responsible": "Responsible user",
+    "file_mode": "Files (non-image) to Avito",
+    "file_mode_link": "Send as a link",
+    "file_mode_reject": "Do not send, show error",
+    "state_ok": "Working",
+    "state_reauth": "Re-authorization required",
+    "last_event": "Last event",
+    "save": "Save",
+    "loading": "Loading…",
+    "error": "Failed to load settings. Refresh the page or contact ko:agency support."
+  }
+}
